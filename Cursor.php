@@ -18,7 +18,7 @@ class Cursor {
 		fwrite(self::$stream, "\033[{$count}C");
 	}
 
-	static function backwards($count = 1) {
+	static function back($count = 1) {
 		fwrite(self::$stream, "\033[{$count}D");
 	}
 
@@ -26,12 +26,12 @@ class Cursor {
 		fwrite(self::$stream, "\033[{$row};{$col}f");
 	}
 
-	static function saveposition() {
+	static function savepos() {
 		fwrite(self::$stream, "\033[s");
 	}
 
 	static function save() {
-		fwrite(self::$stream, "\033[7");
+		fwrite(self::$stream, "\0337");
 	}
 
 	static function unsave() {
@@ -39,7 +39,7 @@ class Cursor {
 	}
 
 	static function restore() {
-		fwrite(self::$stream, "\033[8");
+		fwrite(self::$stream, "\0338");
 	}
 
 }
