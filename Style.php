@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @todo rework this and document itwoo 
+*/
+
 namespace CLI;
 
 class Style {
