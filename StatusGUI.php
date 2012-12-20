@@ -74,7 +74,7 @@ class StatusGUI {
 		$time_text = '';
 		if( $time_id ) {
 			$diff = microtime(true) - $timer[$time_id]['start'];
-			$time_left = self::formtime(($diff / $numerator) * ($denominator - $numerator));
+			$time_left = self::formtime(($numerator ? $diff / $numerator : 0) * ($denominator - $numerator));
 			$elapsed   = self::formtime($diff);
 			if( $diff > 2) { $time_text = $time_left . " ($elapsed)"; }
 		}
