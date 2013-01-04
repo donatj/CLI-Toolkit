@@ -9,7 +9,8 @@ class StatusGUI {
 	 *
 	 * @var resource
 	 */
-	static $stream = STDERR;
+	static $stream    = STDERR;
+	static $altstream = STDOUT;
 
 	/**
 	 * Render a statusbar stack
@@ -38,7 +39,7 @@ class StatusGUI {
 		foreach($lines as $line) { $i++;
 			$text = substr(str_pad($line['str'], Misc::cols() - 10 ), 0, Misc::cols()).PHP_EOL;
 			if( $i == $height - 1 && $last_line_to_opposing_stream ) {
-				fwrite(self::$stream == STDERR ? STDOUT : STDERR, $text);
+				fwrite(self::$altstream, $text);
 			}else{
 				fwrite(self::$stream, $text); 
 			}
