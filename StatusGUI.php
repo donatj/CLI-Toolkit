@@ -71,7 +71,7 @@ class StatusGUI {
 		}
 		fwrite(self::$stream, "\0337\033[" . intval($line) . ";1f\033[2K");
 		
-		$text      = $title . $main_xs . ' - ' . $numerator . '/' . $denominator;
+		$text      = $title . ' - ' . $numerator . '/' . $denominator;
 		$time_text = '';
 		if( $time_id ) {
 			$diff = microtime(true) - $timer[$time_id]['start'];
@@ -83,6 +83,43 @@ class StatusGUI {
 		$main_xs = floor(($numerator / $denominator) * $width);
 
 		fwrite(self::$stream, $text . ' [' . Style::$color( str_repeat('#', $main_xs) ) . str_repeat('.', $width - $main_xs) ."] " . $time_text);
+		fwrite(self::$stream, "\0338");
+	}
+
+	/**
+	 * Draw a Histogram
+	 * 
+	 * @param  string $title
+	 * @param  int $numerator
+	 * @param  int $denominator
+	 * @param  int $line
+	 * @param  int $hist_id
+	 * @param  string $color
+	 * @param  string $full_color 
+	 */
+	static function histogram($title, $numerator, $denominator, $line, $hist_id, $color = 'normal', $full_color = 'red') {
+		$levels = array(' ','▁','▂','▃','▄','▅','▆','▇','█');
+		static $hist = false;
+		
+		if( !$hist || !$hist[$hist_id] ) {
+			$hist[$hist_id] = array_fill(0, Misc::cols(), $levels[0]);
+		}
+
+		fwrite(self::$stream, "\0337\033[" . intval($line) . ";1f\033[2K");
+
+		$text      = $title . ' - ' . $numerator . '/' . $denominator;
+
+		#$lev = round(($numerator / $denominator) * 8);
+
+
+		$lev = intval( ( $numerator / $denominator ) * 9 );
+		$lev = min($lev, 8);
+		$hist[$hist_id][] =  $lev == 8 ? Style::$full_color($levels[$lev]) : Style::$color($levels[$lev]);
+		array_shift( $hist[$hist_id] );
+
+		$sub_array = array_slice($hist[$hist_id], 0 - (Misc::cols() - strlen($text)) + 2 );
+
+		fwrite(self::$stream, $text . '[' . implode( $sub_array, '' ) . ']');
 		fwrite(self::$stream, "\0338");
 	}
 
