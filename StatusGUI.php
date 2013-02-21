@@ -69,9 +69,8 @@ class StatusGUI {
 			}
 			$timer[$time_id]['last_numerator'] = $numerator;
 		}
-		fwrite(self::$stream, "\0337\033[" . intval($line) . ";1f\033[2K");
 		
-		$text      = $title . ' - ' . $numerator . '/' . $denominator;
+		$text      = $title . ' - ' . self::num_display($numerator)  . '/' . self::num_display($denominator);
 		$time_text = '';
 		if( $time_id ) {
 			$diff = microtime(true) - $timer[$time_id]['start'];
@@ -82,8 +81,9 @@ class StatusGUI {
 		$width   = max(min( Misc::cols() - strlen($text) - (strlen($time_text) ?: -1) - 6, $denominator), 4);
 		$main_xs = floor(($numerator / $denominator) * $width);
 
-		fwrite(self::$stream, $text . ' [' . Style::$color( str_repeat('#', $main_xs) ) . str_repeat('.', $width - $main_xs) ."] " . $time_text);
-		fwrite(self::$stream, "\0338");
+		$str = $text . ' [' . Style::$color( str_repeat('#', $main_xs) ) . str_repeat('.', $width - $main_xs) ."] " . $time_text;
+
+		Output::line($str, $line);
 	}
 
 	/**
@@ -107,7 +107,7 @@ class StatusGUI {
 
 		fwrite(self::$stream, "\0337\033[" . intval($line) . ";1f\033[2K");
 
-		$text      = $title . ' - ' . $numerator . '/' . $denominator;
+		$text      = $title . ' - ' . self::num_display($numerator) . '/' . self::num_display($denominator);
 
 		#$lev = round(($numerator / $denominator) * 8);
 
@@ -125,6 +125,10 @@ class StatusGUI {
 
 	private static function formtime($seconds) {
 		return '0' . preg_replace('/^[0:]+(?=:)/', '', ((int)($seconds / 3600)) . ':' . str_pad( (int)(($seconds % 3600) / 60), 2, "0", STR_PAD_LEFT). ':' . str_pad( (int)(($seconds % 60)), 2, "0", STR_PAD_LEFT));
+	}
+
+	private static function num_display($number) {
+		return rtrim( rtrim( number_format($number, 2), '0' ), '.'); // in two rtrim steps to avoid over trimming 10.0
 	}
 
 }
