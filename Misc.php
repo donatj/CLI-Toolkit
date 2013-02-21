@@ -54,14 +54,14 @@ class Misc {
 	 * Save the current state of the terminal via tput
 	 */
 	public static function savestate() {
-		fwrite(self::$stream, str_repeat("\007", `tput smcup`));
+		fwrite(self::$stream, `tput smcup`);
 	}
 
 	/**
 	 * Restore the current state of the terminal via tput
 	 */
 	public static function restorestate() {
-		fwrite(self::$stream, str_repeat("\007", `tput smcup`));
+		fwrite(self::$stream, `tput rmcup`);
 	}
 
 }

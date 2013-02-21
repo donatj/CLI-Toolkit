@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @todo rework this and document itwoo 
-*/
+ * @todo rework this and document it
+ */
 
 namespace CLI;
 
