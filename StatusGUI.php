@@ -22,6 +22,10 @@ class StatusGUI {
 	 */
 	static function statusbar($str, $height = false, $last_line_to_opposing_stream = true) {
 
+		if($height < 0) {
+			$height = Misc::rows() + $height + 1;
+		}
+
 		if( !$height ) {
 			if( defined('STATUSBAR_HEIGHT') ) {
 				$height = STATUSBAR_HEIGHT; //@todo: backwards compatibility with some of my older code, remove
@@ -105,8 +109,6 @@ class StatusGUI {
 			$hist[$hist_id] = array_fill(0, Misc::cols(), $levels[0]);
 		}
 
-		fwrite(self::$stream, "\0337\033[" . intval($line) . ";1f\033[2K");
-
 		$text      = $title . ' - ' . self::num_display($numerator) . '/' . self::num_display($denominator);
 
 		#$lev = round(($numerator / $denominator) * 8);
@@ -119,8 +121,8 @@ class StatusGUI {
 
 		$sub_array = array_slice($hist[$hist_id], 0 - (Misc::cols() - strlen($text)) + 2 );
 
-		fwrite(self::$stream, $text . '[' . implode( $sub_array, '' ) . ']');
-		fwrite(self::$stream, "\0338");
+		$str = $text . '[' . implode( $sub_array, '' ) . ']';
+		Output::line($str, $line);
 	}
 
 	private static function formtime($seconds) {

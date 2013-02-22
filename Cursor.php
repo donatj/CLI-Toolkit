@@ -54,6 +54,12 @@ class Cursor {
 	 * @param int $col
 	 */
 	static function rowcol($row = 1, $col = 1) {
+		if($row < 0) {
+			$row = Misc::rows() + $row + 1;
+		}
+		if($col < 0) {
+			$col = Misc::cols() + $col + 1;
+		}
 		fwrite(self::$stream, "\033[{$row};{$col}f");
 	}
 

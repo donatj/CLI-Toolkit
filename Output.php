@@ -35,7 +35,6 @@ class Output {
 	 */
 	static function line($str, $col = false, $erase = true){
 		if($col !== false) {
-			$col = max(1, $col);
 		 	Cursor::rowcol( $col, 1 );
 		}
 		if( $erase ) { Erase::line(); }
