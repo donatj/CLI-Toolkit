@@ -36,12 +36,15 @@ class StatusGUI {
 
 		static $lines = false; $i = 0;
 		if( !$lines ) { $lines = array_fill(0, $height - 1, array('str' => '')); }
-		$lines[] = array( 'str' => trim($str) );
-		array_shift($lines);
+		foreach( explode(PHP_EOL, $str) as $line ) {
+			$lines[] = array( 'str' => strtr( trim($line), "\r\n", "  ") );	
+			array_shift($lines);
+		}
 
 		fwrite(self::$stream, "\0337\033[1;1f\033[2K");
 		foreach($lines as $line) { $i++;
-			$text = substr(str_pad($line['str'], Misc::cols() - 10 ), 0, Misc::cols()).PHP_EOL;
+			$text = substr(str_pad($line['str'], Misc::cols() ), 0, Misc::cols() - 1);
+			Cursor::rowcol($i, 1);
 			if( $i == $height - 1 && $last_line_to_opposing_stream ) {
 				fwrite(self::$altstream, $text);
 			}else{
@@ -109,7 +112,7 @@ class StatusGUI {
 			$hist[$hist_id] = array_fill(0, Misc::cols(), $levels[0]);
 		}
 
-		$text      = $title . ' - ' . self::num_display($numerator) . '/' . self::num_display($denominator);
+		$text      = $title . ' - ' . self::num_display($numerator) . '/' . self::num_display($denominator) . ' ';
 
 		#$lev = round(($numerator / $denominator) * 8);
 
@@ -119,7 +122,7 @@ class StatusGUI {
 		$hist[$hist_id][] =  $lev == 8 ? Style::$full_color($levels[$lev]) : Style::$color($levels[$lev]);
 		array_shift( $hist[$hist_id] );
 
-		$sub_array = array_slice($hist[$hist_id], 0 - (Misc::cols() - strlen($text)) + 2 );
+		$sub_array = array_slice($hist[$hist_id], 0 - (Misc::cols() - strlen($text)) + 4 );
 
 		$str = $text . '[' . implode( $sub_array, '' ) . ']';
 		Output::line($str, $line);
