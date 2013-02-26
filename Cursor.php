@@ -91,4 +91,18 @@ class Cursor {
 		fwrite(self::$stream, "\0338");
 	}
 
+	/**
+	 * Hides the cursor
+	 */
+	static function hide() {
+		fwrite(self::$stream, "\033[?25l");
+	}
+
+	/**
+	 * Shows the Cursor
+	 */
+	static function show() {
+		fwrite(self::$stream, "\033[?12;25h");	
+	}
+
 }
