@@ -22,7 +22,7 @@ class Output {
 		if($col !== false || $row !== false) {
 			$row = max(1, $row);
 			$col = max(1, $col);
-		 	Cursor::rowcol( $col, $row );
+		 	Cursor::rowcol( $row, $col );
 		}
 		fwrite(self::$stream, $str);
 	}
