@@ -1,5 +1,5 @@
 {
-	"name": "donatj/CLI-Toolkit",
+	"name": "donatj/cli-toolkit",
 	"type": "library",
 	"description": "Simple PHP CLI Toolkit",
 	"keywords": ["CLI-Toolkit", "CLI"],
