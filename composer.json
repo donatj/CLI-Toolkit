@@ -1,0 +1,22 @@
+{
+	"name": "donatj/CLI-Toolkit",
+	"type": "library",
+	"description": "Simple PHP CLI Toolkit",
+	"keywords": ["CLI-Toolkit", "CLI"],
+	"homepage": "https://github.com/donatj/CLI-Toolkit",
+	"license": "MIT",
+	"require": {
+		"php": ">=5.3.0"
+	},
+	"authors": [
+		{
+			"name": "Jesse G. Donat",
+			"email": "donatj@gmail.com",
+			"homepage": "http://donatstudios.com",
+			"role": "Developer"
+		}
+	],
+	"autoload": {
+		"psr-0": { "CLI": "lib/" }
+	}
+}
