@@ -119,6 +119,19 @@ while(true) {
 		$f = $faces[$index];
 
 		$points = array(
+			$l[$f[0]]->x,$l[$f[0]]->y,
+			$l[$f[1]]->x,$l[$f[1]]->y,
+			$l[$f[2]]->x,$l[$f[2]]->y,
+			$l[$f[3]]->x,$l[$f[3]]->y
+		);
+
+		CLI\Graphics::line($l[$f[0]]->x, $l[$f[0]]->y, $l[$f[1]]->x, $l[$f[1]]->y, '.');
+		CLI\Graphics::line($l[$f[1]]->x, $l[$f[1]]->y, $l[$f[2]]->x, $l[$f[2]]->y, '.');
+		CLI\Graphics::line($l[$f[2]]->x, $l[$f[2]]->y, $l[$f[3]]->x, $l[$f[3]]->y, '.');
+		CLI\Graphics::line($l[$f[3]]->x, $l[$f[3]]->y, $l[$f[0]]->x, $l[$f[0]]->y, '.');
+
+		
+		$points = array(
 			$t[$f[0]]->x,$t[$f[0]]->y,
 			$t[$f[1]]->x,$t[$f[1]]->y,
 			$t[$f[2]]->x,$t[$f[2]]->y,
@@ -130,18 +143,6 @@ while(true) {
 		CLI\Graphics::line($t[$f[2]]->x, $t[$f[2]]->y, $t[$f[3]]->x, $t[$f[3]]->y);
 		CLI\Graphics::line($t[$f[3]]->x, $t[$f[3]]->y, $t[$f[0]]->x, $t[$f[0]]->y);
 
-
-		$points = array(
-			$l[$f[0]]->x,$l[$f[0]]->y,
-			$l[$f[1]]->x,$l[$f[1]]->y,
-			$l[$f[2]]->x,$l[$f[2]]->y,
-			$l[$f[3]]->x,$l[$f[3]]->y
-		);
-
-		CLI\Graphics::line($l[$f[0]]->x, $l[$f[0]]->y, $l[$f[1]]->x, $l[$f[1]]->y, '.');
-		CLI\Graphics::line($l[$f[1]]->x, $l[$f[1]]->y, $l[$f[2]]->x, $l[$f[2]]->y, '.');
-		CLI\Graphics::line($l[$f[2]]->x, $l[$f[2]]->y, $l[$f[3]]->x, $l[$f[3]]->y, '.');
-		CLI\Graphics::line($l[$f[3]]->x, $l[$f[3]]->y, $l[$f[0]]->x, $l[$f[0]]->y, '.');
 
 	}
 
