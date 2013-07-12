@@ -102,12 +102,9 @@ while(true) {
 
 	/* Transform all the vertices. */
 	foreach( $vertices as $v ) {
-		$t[] = $v->rotateX($angleX)->rotateY($angleY)->rotateZ($angleZ)->project($img_width,$img_height,256,6);
-	}
-
-		/* Transform all the vertices. */
-	foreach( $vertices as $v ) {
-		$l[] = $v->rotateX($angleX)->rotateY($angleY)->rotateZ($angleZ)->project($img_width,$img_height,256,9);
+		$rotated = $v->rotateX($angleX)->rotateY($angleY)->rotateZ($angleZ);
+		$t[] = $rotated->project($img_width,$img_height,256,6);
+		$l[] = $rotated->project($img_width,$img_height,256,9);
 	}
 
 	$avgZ = array();
