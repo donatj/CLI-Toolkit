@@ -20,9 +20,7 @@ class Output {
 	 */
 	static function string($str, $row = false, $col = false){
 		if($col !== false || $row !== false) {
-			$row = max(1, $row);
-			$col = max(1, $col);
-		 	Cursor::rowcol( $row, $col );
+			Cursor::rowcol( $row, $col );
 		}
 		fwrite(self::$stream, $str);
 	}
@@ -35,7 +33,7 @@ class Output {
 	 */
 	static function line($str, $col = false, $erase = true){
 		if($col !== false) {
-		 	Cursor::rowcol( $col, 1 );
+			Cursor::rowcol( $col, 1 );
 		}
 		if( $erase ) { Erase::line(); }
 		fwrite(self::$stream, $str);

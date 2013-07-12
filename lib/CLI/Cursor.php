@@ -54,6 +54,7 @@ class Cursor {
 	 * @param int $col
 	 */
 	static function rowcol($row = 1, $col = 1) {
+		$row = intval($row); $col = intval($col);
 		if($row < 0) {
 			$row = Misc::rows() + $row + 1;
 		}
