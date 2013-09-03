@@ -30,13 +30,13 @@ class Erase {
 	 *
 	 * @param int|bool $row from a specific row
 	 */
-	public static function line($row = false) {
-		if ($row) {
+	public static function line( $row = false ) {
+		if( $row ) {
 			Cursor::savepos();
 			Cursor::rowcol($row);
 		}
 		fwrite(self::$stream, "\033[2K");
-		if ($row) {
+		if( $row ) {
 			Cursor::restore();
 		}
 	}
@@ -46,13 +46,13 @@ class Erase {
 	 *
 	 * @param int|bool $row from a specific row
 	 */
-	public static function down($row = false) {
-		if ($row) {
+	public static function down( $row = false ) {
+		if( $row ) {
 			Cursor::savepos();
 			Cursor::rowcol($row);
 		}
 		fwrite(self::$stream, "\033[J");
-		if ($row) {
+		if( $row ) {
 			Cursor::restore();
 		}
 	}
@@ -62,13 +62,13 @@ class Erase {
 	 *
 	 * @param int|bool $row from a specific row
 	 */
-	public static function up($row = false) {
-		if ($row) {
+	public static function up( $row = false ) {
+		if( $row ) {
 			Cursor::savepos();
 			Cursor::rowcol($row, Misc::cols());
 		}
 		fwrite(self::$stream, "\033[1J");
-		if ($row) {
+		if( $row ) {
 			Cursor::restore();
 		}
 	}

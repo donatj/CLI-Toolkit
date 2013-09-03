@@ -16,7 +16,7 @@ class Cursor {
 	 *
 	 * @param int $count
 	 */
-	static function up($count = 1) {
+	static function up( $count = 1 ) {
 		fwrite(self::$stream, "\033[{$count}A");
 	}
 
@@ -25,7 +25,7 @@ class Cursor {
 	 *
 	 * @param int $count
 	 */
-	static function down($count = 1) {
+	static function down( $count = 1 ) {
 		fwrite(self::$stream, "\033[{$count}B");
 	}
 
@@ -34,7 +34,7 @@ class Cursor {
 	 *
 	 * @param int $count
 	 */
-	static function forward($count = 1) {
+	static function forward( $count = 1 ) {
 		fwrite(self::$stream, "\033[{$count}C");
 	}
 
@@ -43,7 +43,7 @@ class Cursor {
 	 *
 	 * @param int $count
 	 */
-	static function back($count = 1) {
+	static function back( $count = 1 ) {
 		fwrite(self::$stream, "\033[{$count}D");
 	}
 
@@ -53,12 +53,13 @@ class Cursor {
 	 * @param int $row
 	 * @param int $col
 	 */
-	static function rowcol($row = 1, $col = 1) {
-		$row = intval($row); $col = intval($col);
-		if($row < 0) {
+	static function rowcol( $row = 1, $col = 1 ) {
+		$row = intval($row);
+		$col = intval($col);
+		if( $row < 0 ) {
 			$row = Misc::rows() + $row + 1;
 		}
-		if($col < 0) {
+		if( $col < 0 ) {
 			$col = Misc::cols() + $col + 1;
 		}
 		fwrite(self::$stream, "\033[{$row};{$col}f");
@@ -103,7 +104,7 @@ class Cursor {
 	 * Shows the Cursor
 	 */
 	static function show() {
-		fwrite(self::$stream, "\033[?25h\033[?0c");	
+		fwrite(self::$stream, "\033[?25h\033[?0c");
 	}
 
 }

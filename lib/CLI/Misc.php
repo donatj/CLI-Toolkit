@@ -18,12 +18,13 @@ class Misc {
 	 * @param bool $cache Whether to cache the response
 	 * @return int
 	 */
-	public static function cols($cache = true) {
+	public static function cols( $cache = true ) {
 		static $cols = false;
 		if( !$cols || !$cache ) {
 			$cols = intval(`tput cols`);
 		}
-		return $cols ?: 80;
+
+		return $cols ? : 80;
 	}
 
 	/**
@@ -33,12 +34,13 @@ class Misc {
 	 * @param bool $cache Whether to cache the response
 	 * @return int
 	 */
-	public static function rows($cache = true) {
+	public static function rows( $cache = true ) {
 		static $rows = false;
 		if( !$rows || !$cache ) {
 			$rows = intval(`tput lines`);
 		}
-		return $rows ?: 24;
+
+		return $rows ? : 24;
 	}
 
 	/**
@@ -46,7 +48,7 @@ class Misc {
 	 *
 	 * @param int $count
 	 */
-	public static function bell($count = 1) {
+	public static function bell( $count = 1 ) {
 		fwrite(self::$stream, str_repeat("\007", $count));
 	}
 
