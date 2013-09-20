@@ -49,10 +49,10 @@ class Graphics {
 		self::line($x1, $y2, $x2, $y2, (array)$frame[2]);
 
 		if( count($frame) == 8 ) {
-			Output::string( $frame[4], $y1, $x1 );
-			Output::string( $frame[5], $y1, $x2 );
-			Output::string( $frame[6], $y2, $x2 );
-			Output::string( $frame[7], $y2, $x1 );
+			Output::string($frame[4], $y1, $x1);
+			Output::string($frame[5], $y1, $x2);
+			Output::string($frame[6], $y2, $x2);
+			Output::string($frame[7], $y2, $x1);
 		}
 
 	}
