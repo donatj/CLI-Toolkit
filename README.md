@@ -14,3 +14,7 @@ CLI-Toolkit is available through Packagist via Composer.
   "donatj/cli-toolkit": "dev-master",
 }
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/donatj/cli-toolkit/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
