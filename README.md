@@ -137,7 +137,7 @@ Hides the cursor
 
 #### Method: `Cursor`::`show()`
 
-Shows the Cursor  
+Shows the cursor  
   
 
 ### Class: Erase \[ `\CLI` \]
@@ -160,7 +160,7 @@ Erase to the start of line
 
 ---
 
-#### Method: `Erase`::`line([ $row = false])`
+#### Method: `Erase`::`line([ $row = null])`
 
 Erase entire line  
   
@@ -168,13 +168,13 @@ Erase entire line
 
 ##### Parameters:
 
-- ***int*** | ***bool*** `$row` - from a specific row
+- ***int*** | ***null*** `$row` - from a specific row
 
 
 
 ---
 
-#### Method: `Erase`::`down([ $row = false])`
+#### Method: `Erase`::`down([ $row = null])`
 
 Erases everything below the cursor  
   
@@ -182,13 +182,13 @@ Erases everything below the cursor
 
 ##### Parameters:
 
-- ***int*** | ***bool*** `$row` - from a specific row
+- ***int*** | ***null*** `$row` - from a specific row
 
 
 
 ---
 
-#### Method: `Erase`::`up([ $row = false])`
+#### Method: `Erase`::`up([ $row = null])`
 
 Erases everything above the cursor  
   
@@ -196,7 +196,7 @@ Erases everything above the cursor
 
 ##### Parameters:
 
-- ***int*** | ***bool*** `$row` - from a specific row
+- ***int*** | ***null*** `$row` - from a specific row
 
 
 
@@ -280,7 +280,7 @@ Restore the current state of the terminal via tput
 
 ### Class: Output \[ `\CLI` \]
 
-#### Method: `Output`::`string($str [, $row = false [, $col = false]])`
+#### Method: `Output`::`string($str [, $row = null [, $col = null]])`
 
 Output a string  
   
@@ -296,7 +296,7 @@ Output a string
 
 ---
 
-#### Method: `Output`::`line($str [, $col = false [, $erase = true]])`
+#### Method: `Output`::`line($str [, $col = null [, $erase = true]])`
 
 Output a line, erasing the line first  
   
@@ -305,12 +305,12 @@ Output a line, erasing the line first
 ##### Parameters:
 
 - ***string*** `$str` - String to output
-- ***false*** | ***int*** `$col` - The column to draw the current line
+- ***null*** | ***int*** `$col` - The column to draw the current line
 - ***boolean*** `$erase` - Clear the line before drawing the passed string
 
 ### Class: StatusGUI \[ `\CLI` \]
 
-#### Method: `StatusGUI`::`statusbar($str [, $height = false [, $last_line_to_opposing_stream = true]])`
+#### Method: `StatusGUI`::`statusbar($str [, $height = null [, $last_line_to_opposing_stream = true]])`
 
 Render a statusbar stack  
   
@@ -319,14 +319,14 @@ Render a statusbar stack
 ##### Parameters:
 
 - ***string*** `$str` - The status to add
-- ***\CLI\book*** | ***int*** `$height` - The height of the status menu to render
+- ***null*** | ***int*** `$height` - The height of the status menu to render
 - ***bool*** `$last_line_to_opposing_stream` - Send the last line of the status to the oposite stream (STDERR/STDOUT)
 
 
 
 ---
 
-#### Method: `StatusGUI`::`progressbar($title, $numerator, $denominator, $line [, $time_id = false [, $color = 'cyan']])`
+#### Method: `StatusGUI`::`progressbar($title, $numerator, $denominator, $line [, $time_id = null [, $color = 'cyan']])`
 
 Draw a Progress Bar  
   
@@ -338,7 +338,7 @@ Draw a Progress Bar
 - ***int*** `$numerator`
 - ***int*** `$denominator`
 - ***int*** `$line` - Which row of the terminal to render
-- ***int*** `$time_id`
+- ***int*** | ***null*** `$time_id`
 - ***string*** `$color`
 
 
