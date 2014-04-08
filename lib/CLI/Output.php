@@ -18,8 +18,8 @@ class Output {
 	 * @param  false|int $row The optional row to output to
 	 * @param  false|int $col The optional column to output to
 	 */
-	static function string( $str, $row = false, $col = false ) {
-		if( $col !== false || $row !== false ) {
+	static function string( $str, $row = null, $col = null ) {
+		if( $col !== null || $row !== null ) {
 			Cursor::rowcol($row, $col);
 		}
 		fwrite(self::$stream, $str);
@@ -29,11 +29,11 @@ class Output {
 	 * Output a line, erasing the line first
 	 *
 	 * @param  string    $str String to output
-	 * @param  false|int $col The column to draw the current line
+	 * @param  null|int $col The column to draw the current line
 	 * @param  boolean   $erase Clear the line before drawing the passed string
 	 */
-	static function line( $str, $col = false, $erase = true ) {
-		if( $col !== false ) {
+	static function line( $str, $col = null, $erase = true ) {
+		if( $col !== null ) {
 			Cursor::rowcol($col, 1);
 		}
 		if( $erase ) {

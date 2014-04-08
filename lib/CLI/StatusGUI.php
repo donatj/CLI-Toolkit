@@ -15,12 +15,12 @@ class StatusGUI {
 	/**
 	 * Render a statusbar stack
 	 *
-	 * @staticvar boolean $lines A stack of previously added lines
+	 * @staticvar bool $lines A stack of previously added lines
 	 * @param string   $str The status to add
-	 * @param book|int $height The height of the status menu to render
+	 * @param null|int $height The height of the status menu to render
 	 * @param bool     $last_line_to_opposing_stream Send the last line of the status to the oposite stream (STDERR/STDOUT)
 	 */
-	static function statusbar( $str, $height = false, $last_line_to_opposing_stream = true ) {
+	static function statusbar( $str, $height = null, $last_line_to_opposing_stream = true ) {
 
 		if( $height < 0 ) {
 			$height = Misc::rows() + $height + 1;
@@ -65,14 +65,14 @@ class StatusGUI {
 	 * Draw a Progress Bar
 	 *
 	 * @staticvar array $timer
-	 * @param string $title
-	 * @param int    $numerator
-	 * @param int    $denominator
-	 * @param int    $line Which row of the terminal to render
-	 * @param int    $time_id
-	 * @param string $color
+	 * @param string   $title
+	 * @param int      $numerator
+	 * @param int      $denominator
+	 * @param int      $line Which row of the terminal to render
+	 * @param int|null $time_id
+	 * @param string   $color
 	 */
-	static function progressbar( $title, $numerator, $denominator, $line, $time_id = false, $color = 'cyan' ) {
+	static function progressbar( $title, $numerator, $denominator, $line, $time_id = null, $color = 'cyan' ) {
 		static $timer = array();
 		if( $time_id ) {
 			if( !isset($timer[$time_id]) || $timer[$time_id]['last_numerator'] > $numerator ) {

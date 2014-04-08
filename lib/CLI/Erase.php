@@ -28,9 +28,9 @@ class Erase {
 	/**
 	 * Erase entire line
 	 *
-	 * @param int|bool $row from a specific row
+	 * @param int|null $row from a specific row
 	 */
-	public static function line( $row = false ) {
+	public static function line( $row = null ) {
 		if( $row ) {
 			Cursor::savepos();
 			Cursor::rowcol($row);
@@ -44,9 +44,9 @@ class Erase {
 	/**
 	 * Erases everything below the cursor
 	 *
-	 * @param int|bool $row from a specific row
+	 * @param int|null $row from a specific row
 	 */
-	public static function down( $row = false ) {
+	public static function down( $row = null ) {
 		if( $row ) {
 			Cursor::savepos();
 			Cursor::rowcol($row);
@@ -60,9 +60,9 @@ class Erase {
 	/**
 	 * Erases everything above the cursor
 	 *
-	 * @param int|bool $row from a specific row
+	 * @param int|null $row from a specific row
 	 */
-	public static function up( $row = false ) {
+	public static function up( $row = null ) {
 		if( $row ) {
 			Cursor::savepos();
 			Cursor::rowcol($row, Misc::cols());

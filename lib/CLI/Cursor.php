@@ -101,7 +101,7 @@ class Cursor {
 	}
 
 	/**
-	 * Shows the Cursor
+	 * Shows the cursor
 	 */
 	static function show() {
 		fwrite(self::$stream, "\033[?25h\033[?0c");
