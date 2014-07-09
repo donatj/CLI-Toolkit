@@ -59,6 +59,11 @@ class Erase {
 		fwrite(self::$stream, "\033[2J");
 	}
 
+	/**
+	 * @param resource $stream
+	 * @param string $str
+	 * @param integer|null $row
+	 */
 	protected static function saveWriteRestore($stream, $str, $row) {
 		if( $row ) {
 			Cursor::savepos();
