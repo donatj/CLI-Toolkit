@@ -138,6 +138,9 @@ class StatusGUI {
 		return '0' . preg_replace('/^[0:]+(?=:)/', '', ((int)($seconds / 3600)) . ':' . str_pad((int)(($seconds % 3600) / 60), 2, "0", STR_PAD_LEFT) . ':' . str_pad((int)(($seconds % 60)), 2, "0", STR_PAD_LEFT));
 	}
 
+	/**
+	 * @param integer $number
+	 */
 	private static function num_display( $number ) {
 		return rtrim(rtrim(number_format($number, 2), '0'), '.'); // in two rtrim steps to avoid over trimming 10.0
 	}
