@@ -31,14 +31,7 @@ class Erase {
 	 * @param int|null $row from a specific row
 	 */
 	public static function line( $row = null ) {
-		if( $row ) {
-			Cursor::savepos();
-			Cursor::rowcol($row);
-		}
-		fwrite(self::$stream, "\033[2K");
-		if( $row ) {
-			Cursor::restore();
-		}
+		$this->saveWriteRestore(self::$stream, "\033[2K", $row);
 	}
 
 	/**
@@ -47,14 +40,7 @@ class Erase {
 	 * @param int|null $row from a specific row
 	 */
 	public static function down( $row = null ) {
-		if( $row ) {
-			Cursor::savepos();
-			Cursor::rowcol($row);
-		}
-		fwrite(self::$stream, "\033[J");
-		if( $row ) {
-			Cursor::restore();
-		}
+		$this->saveWriteRestore(self::$stream, "\033[J", $row);
 	}
 
 	/**
@@ -63,14 +49,7 @@ class Erase {
 	 * @param int|null $row from a specific row
 	 */
 	public static function up( $row = null ) {
-		if( $row ) {
-			Cursor::savepos();
-			Cursor::rowcol($row, Misc::cols());
-		}
-		fwrite(self::$stream, "\033[1J");
-		if( $row ) {
-			Cursor::restore();
-		}
+		$this->saveWriteRestore(self::$stream, "\033[1J", $row);
 	}
 
 	/**
@@ -78,6 +57,17 @@ class Erase {
 	 */
 	public static function screen() {
 		fwrite(self::$stream, "\033[2J");
+	}
+
+	private function saveWriteRestore($stream, $str, $row) {
+		if( $row ) {
+			Cursor::savepos();
+			Cursor::rowcol($row, Misc::cols());
+		}
+		fwrite($stream, $str);
+		if( $row ) {
+			Cursor::restore();
+		}
 	}
 
 }
