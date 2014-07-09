@@ -31,7 +31,7 @@ class Erase {
 	 * @param int|null $row from a specific row
 	 */
 	public static function line( $row = null ) {
-		$this->saveWriteRestore(self::$stream, "\033[2K", $row);
+		static::saveWriteRestore(self::$stream, "\033[2K", $row);
 	}
 
 	/**
@@ -40,7 +40,7 @@ class Erase {
 	 * @param int|null $row from a specific row
 	 */
 	public static function down( $row = null ) {
-		$this->saveWriteRestore(self::$stream, "\033[J", $row);
+		static::saveWriteRestore(self::$stream, "\033[J", $row);
 	}
 
 	/**
@@ -49,7 +49,7 @@ class Erase {
 	 * @param int|null $row from a specific row
 	 */
 	public static function up( $row = null ) {
-		$this->saveWriteRestore(self::$stream, "\033[1J", $row);
+		static::saveWriteRestore(self::$stream, "\033[1J", $row);
 	}
 
 	/**
@@ -59,7 +59,7 @@ class Erase {
 		fwrite(self::$stream, "\033[2J");
 	}
 
-	private function saveWriteRestore($stream, $str, $row) {
+	private static function saveWriteRestore($stream, $str, $row) {
 		if( $row ) {
 			Cursor::savepos();
 			Cursor::rowcol($row, Misc::cols());
