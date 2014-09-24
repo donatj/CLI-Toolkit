@@ -11,7 +11,7 @@ CLI-Toolkit is available through Packagist via Composer.
 
 ```json
 "require": {
-  "donatj/cli-toolkit": "dev-master",
+  "donatj/cli-toolkit": "0.*",
 }
 ```
 
