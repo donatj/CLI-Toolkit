@@ -1,6 +1,6 @@
 <?php
 
-function __autoload( $className )
+require('__autoload.php');
 
 /* Represents points in 3D space. */
 class Point3D {
