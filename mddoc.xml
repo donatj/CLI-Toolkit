@@ -1,29 +1,22 @@
 <mddoc>
-
 	<docpage target="README.md" autoloader="psr0" autoloader-root="src">
-
-        <section title="PHP CLI-Toolkit">
-            <text><![CDATA[
-[![Latest Stable Version](https://poser.pugx.org/donatj/cli-toolkit/v/stable.png)](https://packagist.org/packages/donatj/cli-toolkit)
-[![Total Downloads](https://poser.pugx.org/donatj/cli-toolkit/downloads.png)](https://packagist.org/packages/donatj/cli-toolkit)
-
-A Simple PHP CLI Toolkit
-]]></text>
-			<section title="Installing">
-				<text><![CDATA[
-CLI-Toolkit is available through Packagist via Composer.
-
-```json
-"require": {
-  "donatj/cli-toolkit": "dev-master",
-}
-```
-]]></text>
+		<section title="PHP CLI-Toolkit">
+			<badge-poser type="version"/>
+			<badge-poser type="downloads"/>
+			<text>A Simple PHP CLI Toolkit</text>
+			<section title="Requirements">
+				<composer-requires/>
 			</section>
-            <section title="Documentation">
-                <recursivedirectory name="lib"/>
-            </section>
-        </section>
-		<text>Different Level</text>
+			<section title="Installing">
+				<composer-install/>
+			</section>
+			<section title="Documentation">
+				<docpage target="DOCS.md" autoloader="psr0" autoloader-root="src">
+					<section title="Documentation">
+						<recursivedirectory name="lib"/>
+					</section>
+				</docpage>
+			</section>
+		</section>
 	</docpage>
 </mddoc>
