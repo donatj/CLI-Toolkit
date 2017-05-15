@@ -20,7 +20,7 @@ class StatusGUI {
 	 * @param null|int $height The height of the status menu to render
 	 * @param bool     $last_line_to_opposing_stream Send the last line of the status to the oposite stream (STDERR/STDOUT)
 	 */
-	static function statusbar( $str, $height = null, $last_line_to_opposing_stream = true ) {
+	public static function statusbar( $str, $height = null, $last_line_to_opposing_stream = true ) {
 
 		if( $height < 0 ) {
 			$height = Misc::rows() + $height + 1;
@@ -72,7 +72,7 @@ class StatusGUI {
 	 * @param int|null $time_id
 	 * @param string   $color
 	 */
-	static function progressbar( $title, $numerator, $denominator, $line, $time_id = null, $color = 'cyan' ) {
+	public static function progressbar( $title, $numerator, $denominator, $line, $time_id = null, $color = 'cyan' ) {
 		static $timer = array();
 		if( $time_id ) {
 			if( !isset($timer[$time_id]) || $timer[$time_id]['last_numerator'] > $numerator ) {
@@ -110,7 +110,7 @@ class StatusGUI {
 	 * @param  string $color
 	 * @param  string $full_color
 	 */
-	static function histogram( $title, $numerator, $denominator, $line, $hist_id, $color = 'normal', $full_color = 'red' ) {
+	public static function histogram( $title, $numerator, $denominator, $line, $hist_id, $color = 'normal', $full_color = 'red' ) {
 		$levels = array( ' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' );
 		static $hist = false;
 

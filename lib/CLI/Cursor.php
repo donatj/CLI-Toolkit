@@ -16,7 +16,7 @@ class Cursor {
 	 *
 	 * @param int $count
 	 */
-	static function up( $count = 1 ) {
+	public static function up( $count = 1 ) {
 		fwrite(self::$stream, "\033[{$count}A");
 	}
 
@@ -25,7 +25,7 @@ class Cursor {
 	 *
 	 * @param int $count
 	 */
-	static function down( $count = 1 ) {
+	public static function down( $count = 1 ) {
 		fwrite(self::$stream, "\033[{$count}B");
 	}
 
@@ -34,7 +34,7 @@ class Cursor {
 	 *
 	 * @param int $count
 	 */
-	static function forward( $count = 1 ) {
+	public static function forward( $count = 1 ) {
 		fwrite(self::$stream, "\033[{$count}C");
 	}
 
@@ -43,7 +43,7 @@ class Cursor {
 	 *
 	 * @param int $count
 	 */
-	static function back( $count = 1 ) {
+	public static function back( $count = 1 ) {
 		fwrite(self::$stream, "\033[{$count}D");
 	}
 
@@ -53,7 +53,7 @@ class Cursor {
 	 * @param int $row
 	 * @param int $col
 	 */
-	static function rowcol( $row = 1, $col = 1 ) {
+	public static function rowcol( $row = 1, $col = 1 ) {
 		$row = intval($row);
 		$col = intval($col);
 		if( $row < 0 ) {
@@ -68,42 +68,42 @@ class Cursor {
 	/**
 	 * Save the current cursor position
 	 */
-	static function savepos() {
+	public static function savepos() {
 		fwrite(self::$stream, "\033[s");
 	}
 
 	/**
 	 * Save the current cursor position and attributes
 	 */
-	static function save() {
+	public static function save() {
 		fwrite(self::$stream, "\0337");
 	}
 
 	/**
 	 * Delete the currently saved cursor data
 	 */
-	static function unsave() {
+	public static function unsave() {
 		fwrite(self::$stream, "\033[u");
 	}
 
 	/**
 	 * Restore the previously saved cursor data
 	 */
-	static function restore() {
+	public static function restore() {
 		fwrite(self::$stream, "\0338");
 	}
 
 	/**
 	 * Hides the cursor
 	 */
-	static function hide() {
+	public static function hide() {
 		fwrite(self::$stream, "\033[?25l");
 	}
 
 	/**
 	 * Shows the cursor
 	 */
-	static function show() {
+	public static function show() {
 		fwrite(self::$stream, "\033[?25h\033[?0c");
 	}
 
@@ -112,7 +112,7 @@ class Cursor {
 	 *
 	 * @param bool $wrap
 	 */
-	static function wrap( $wrap = true ) {
+	public static function wrap( $wrap = true ) {
 		if( $wrap ) {
 			fwrite(self::$stream, "\033[?7h");
 		} else {

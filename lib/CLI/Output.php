@@ -18,7 +18,7 @@ class Output {
 	 * @param  false|int $row The optional row to output to
 	 * @param  false|int $col The optional column to output to
 	 */
-	static function string( $str, $row = null, $col = null ) {
+	public static function string( $str, $row = null, $col = null ) {
 		if( $col !== null || $row !== null ) {
 			Cursor::rowcol($row, $col);
 		}
@@ -32,7 +32,7 @@ class Output {
 	 * @param  null|int $col The column to draw the current line
 	 * @param  boolean   $erase Clear the line before drawing the passed string
 	 */
-	static function line( $str, $col = null, $erase = true ) {
+	public static function line( $str, $col = null, $erase = true ) {
 		if( $col !== null ) {
 			Cursor::rowcol($col, 1);
 		}
