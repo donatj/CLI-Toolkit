@@ -87,6 +87,16 @@ Hides the cursor
 
 Shows the cursor
 
+---
+
+### Method: `Cursor::wrap([ $wrap = true])`
+
+Enable/Disable Auto-Wrap
+
+#### Parameters:
+
+- ***bool*** `$wrap`
+
 ## Class: Erase \[ `\CLI` \]
 
 ### Method: `Erase::eol()`

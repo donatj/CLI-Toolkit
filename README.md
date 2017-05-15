@@ -1,7 +1,7 @@
 # PHP CLI-Toolkit
 
-[![Latest Stable Version](https://poser.pugx.org/donatj/cli-toolkit/version)](https://packagist.org/packages/donatj/cli-toolkit "https://packagist.org/packages/donatj/cli-toolkit")
-[![Total Downloads](https://poser.pugx.org/donatj/cli-toolkit/downloads)](https://packagist.org/packages/donatj/cli-toolkit "https://packagist.org/packages/donatj/cli-toolkit")
+[![Latest Stable Version](https://poser.pugx.org/donatj/cli-toolkit/version)](https://packagist.org/packages/donatj/cli-toolkit)
+[![Total Downloads](https://poser.pugx.org/donatj/cli-toolkit/downloads)](https://packagist.org/packages/donatj/cli-toolkit)
 
 
 A Simple PHP CLI Toolkit
