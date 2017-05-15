@@ -107,4 +107,17 @@ class Cursor {
 		fwrite(self::$stream, "\033[?25h\033[?0c");
 	}
 
+	/**
+	 * Enable/Disable Auto-Wrap
+	 *
+	 * @param bool $wrap
+	 */
+	static function wrap( $wrap = true ) {
+		if( $wrap ) {
+			fwrite(self::$stream, "\033[?7h");
+		} else {
+			fwrite(self::$stream, "\033[?7l");
+		}
+	}
+
 }
