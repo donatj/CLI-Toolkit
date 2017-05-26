@@ -1,8 +1,25 @@
 # Documentation
 
-## Class: Cursor \[ `\CLI` \]
+## Class: \CLI\Cursor
 
-### Method: `Cursor::up([ $count = 1])`
+```php
+<?php
+namespace CLI;
+
+class Cursor {
+	/**
+	 * Pointer to the stream where the data is sent
+	 * @var resource
+	 */
+	public static $stream = STDERR;
+}
+```
+
+### Method: Cursor::up
+
+```php
+function up([ $count = 1])
+```
 
 Move the cursor up by count
 
@@ -12,7 +29,11 @@ Move the cursor up by count
 
 ---
 
-### Method: `Cursor::down([ $count = 1])`
+### Method: Cursor::down
+
+```php
+function down([ $count = 1])
+```
 
 Move the cursor down by count
 
@@ -22,7 +43,11 @@ Move the cursor down by count
 
 ---
 
-### Method: `Cursor::forward([ $count = 1])`
+### Method: Cursor::forward
+
+```php
+function forward([ $count = 1])
+```
 
 Move the cursor right by count
 
@@ -32,7 +57,11 @@ Move the cursor right by count
 
 ---
 
-### Method: `Cursor::back([ $count = 1])`
+### Method: Cursor::back
+
+```php
+function back([ $count = 1])
+```
 
 Move the cursor left by count
 
@@ -42,7 +71,11 @@ Move the cursor left by count
 
 ---
 
-### Method: `Cursor::rowcol([ $row = 1 [, $col = 1]])`
+### Method: Cursor::rowcol
+
+```php
+function rowcol([ $row = 1 [, $col = 1]])
+```
 
 Move the cursor to a specific row and column
 
@@ -53,43 +86,71 @@ Move the cursor to a specific row and column
 
 ---
 
-### Method: `Cursor::savepos()`
+### Method: Cursor::savepos
+
+```php
+function savepos()
+```
 
 Save the current cursor position
 
 ---
 
-### Method: `Cursor::save()`
+### Method: Cursor::save
+
+```php
+function save()
+```
 
 Save the current cursor position and attributes
 
 ---
 
-### Method: `Cursor::unsave()`
+### Method: Cursor::unsave
+
+```php
+function unsave()
+```
 
 Delete the currently saved cursor data
 
 ---
 
-### Method: `Cursor::restore()`
+### Method: Cursor::restore
+
+```php
+function restore()
+```
 
 Restore the previously saved cursor data
 
 ---
 
-### Method: `Cursor::hide()`
+### Method: Cursor::hide
+
+```php
+function hide()
+```
 
 Hides the cursor
 
 ---
 
-### Method: `Cursor::show()`
+### Method: Cursor::show
+
+```php
+function show()
+```
 
 Shows the cursor
 
 ---
 
-### Method: `Cursor::wrap([ $wrap = true])`
+### Method: Cursor::wrap
+
+```php
+function wrap([ $wrap = true])
+```
 
 Enable/Disable Auto-Wrap
 
@@ -97,21 +158,46 @@ Enable/Disable Auto-Wrap
 
 - ***bool*** `$wrap`
 
-## Class: Erase \[ `\CLI` \]
+## Class: \CLI\Erase
 
-### Method: `Erase::eol()`
+```php
+<?php
+namespace CLI;
+
+class Erase {
+	/**
+	 * Pointer to the stream where the data is sent
+	 * @var resource
+	 */
+	public static $stream = STDERR;
+}
+```
+
+### Method: Erase::eol
+
+```php
+function eol()
+```
 
 Erase to the end of line
 
 ---
 
-### Method: `Erase::sol()`
+### Method: Erase::sol
+
+```php
+function sol()
+```
 
 Erase to the start of line
 
 ---
 
-### Method: `Erase::line([ $row = null])`
+### Method: Erase::line
+
+```php
+function line([ $row = null])
+```
 
 Erase entire line
 
@@ -121,7 +207,11 @@ Erase entire line
 
 ---
 
-### Method: `Erase::down([ $row = null])`
+### Method: Erase::down
+
+```php
+function down([ $row = null])
+```
 
 Erases everything below the cursor
 
@@ -131,7 +221,11 @@ Erases everything below the cursor
 
 ---
 
-### Method: `Erase::up([ $row = null])`
+### Method: Erase::up
+
+```php
+function up([ $row = null])
+```
 
 Erases everything above the cursor
 
@@ -141,11 +235,15 @@ Erases everything above the cursor
 
 ---
 
-### Method: `Erase::screen()`
+### Method: Erase::screen
+
+```php
+function screen()
+```
 
 Erases the entire screen
 
-## Class: Graphics \[ `\CLI` \]
+## Class: \CLI\Graphics
 
 
 
@@ -155,9 +253,26 @@ Erases the entire screen
 
 ### Undocumented Method: `Graphics::box($x1, $y1, $x2, $y2 [, $frame = array("-", "|", "-", "|", "x", "x", "x", "x")])`
 
-## Class: Misc \[ `\CLI` \]
+## Class: \CLI\Misc
 
-### Method: `Misc::cols([ $cache = true])`
+```php
+<?php
+namespace CLI;
+
+class Misc {
+	/**
+	 * Pointer to the stream where the data is sent
+	 * @var resource
+	 */
+	public static $stream = STDERR;
+}
+```
+
+### Method: Misc::cols
+
+```php
+function cols([ $cache = true])
+```
 
 The col size of the current terminal as returned by tput
 
@@ -171,7 +286,11 @@ The col size of the current terminal as returned by tput
 
 ---
 
-### Method: `Misc::rows([ $cache = true])`
+### Method: Misc::rows
+
+```php
+function rows([ $cache = true])
+```
 
 The row size of the current terminal as returned by tput
 
@@ -185,7 +304,11 @@ The row size of the current terminal as returned by tput
 
 ---
 
-### Method: `Misc::bell([ $count = 1])`
+### Method: Misc::bell
+
+```php
+function bell([ $count = 1])
+```
 
 Triggers a terminal bell
 
@@ -195,19 +318,44 @@ Triggers a terminal bell
 
 ---
 
-### Method: `Misc::savestate()`
+### Method: Misc::savestate
+
+```php
+function savestate()
+```
 
 Save the current state of the terminal via tput
 
 ---
 
-### Method: `Misc::restorestate()`
+### Method: Misc::restorestate
+
+```php
+function restorestate()
+```
 
 Restore the current state of the terminal via tput
 
-## Class: Output \[ `\CLI` \]
+## Class: \CLI\Output
 
-### Method: `Output::string($str [, $row = null [, $col = null]])`
+```php
+<?php
+namespace CLI;
+
+class Output {
+	/**
+	 * Pointer to the stream where the data is sent
+	 * @var resource
+	 */
+	public static $stream = STDOUT;
+}
+```
+
+### Method: Output::string
+
+```php
+function string($str [, $row = null [, $col = null]])
+```
 
 Output a string
 
@@ -219,7 +367,11 @@ Output a string
 
 ---
 
-### Method: `Output::line($str [, $col = null [, $erase = true]])`
+### Method: Output::line
+
+```php
+function line($str [, $col = null [, $erase = true]])
+```
 
 Output a line, erasing the line first
 
@@ -229,9 +381,27 @@ Output a line, erasing the line first
 - ***null*** | ***int*** `$col` - The column to draw the current line
 - ***boolean*** `$erase` - Clear the line before drawing the passed string
 
-## Class: StatusGUI \[ `\CLI` \]
+## Class: \CLI\StatusGUI
 
-### Method: `StatusGUI::statusbar($str [, $height = null [, $last_line_to_opposing_stream = true]])`
+```php
+<?php
+namespace CLI;
+
+class StatusGUI {
+	/**
+	 * Pointer to the stream where the data is sent
+	 * @var resource
+	 */
+	public static $stream = STDERR;
+	public static $altstream = STDOUT;
+}
+```
+
+### Method: StatusGUI::statusbar
+
+```php
+function statusbar($str [, $height = null [, $last_line_to_opposing_stream = true]])
+```
 
 Render a statusbar stack
 
@@ -243,7 +413,11 @@ Render a statusbar stack
 
 ---
 
-### Method: `StatusGUI::progressbar($title, $numerator, $denominator, $line [, $time_id = null [, $color = 'cyan']])`
+### Method: StatusGUI::progressbar
+
+```php
+function progressbar($title, $numerator, $denominator, $line [, $time_id = null [, $color = 'cyan']])
+```
 
 Draw a Progress Bar
 
@@ -258,7 +432,11 @@ Draw a Progress Bar
 
 ---
 
-### Method: `StatusGUI::histogram($title, $numerator, $denominator, $line, $hist_id [, $color = 'normal' [, $full_color = 'red']])`
+### Method: StatusGUI::histogram
+
+```php
+function histogram($title, $numerator, $denominator, $line, $hist_id [, $color = 'normal' [, $full_color = 'red']])
+```
 
 Draw a Histogram
 
@@ -272,9 +450,20 @@ Draw a Histogram
 - ***string*** `$color`
 - ***string*** `$full_color`
 
-## Class: Style \[ `\CLI` \]
+## Class: \CLI\Style
 
 Class Style
+
+```php
+<?php
+namespace CLI;
+
+class Style {
+	public static $foreground_colors = array('bold' => '1', 'dim' => '2', 'black' => '0;30', 'dark_gray' => '1;30', 'blue' => '0;34', 'light_blue' => '1;34', 'green' => '0;32', 'light_green' => '1;32', 'cyan' => '0;36', 'light_cyan' => '1;36', 'red' => '0;31', 'light_red' => '1;31', 'purple' => '0;35', 'light_purple' => '1;35', 'brown' => '0;33', 'yellow' => '1;33', 'light_gray' => '0;37', 'white' => '1;37', 'normal' => '0;39');
+	public static $background_colors = array('black' => '40', 'red' => '41', 'green' => '42', 'yellow' => '43', 'blue' => '44', 'magenta' => '45', 'cyan' => '46', 'light_gray' => '47');
+	public static $options = array('underline' => '4', 'blink' => '5', 'reverse' => '7', 'hidden' => '8');
+}
+```
 
 
 
