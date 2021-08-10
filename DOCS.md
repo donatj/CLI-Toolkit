@@ -249,7 +249,7 @@ Erases the entire screen
 
 ### Undocumented Method: `Graphics::line($x1, $y1, $x2, $y2 [, $chars = array('#')])`
 
-
+---
 
 ### Undocumented Method: `Graphics::box($x1, $y1, $x2, $y2 [, $frame = array("-", "|", "-", "|", "x", "x", "x", "x")])`
 
@@ -379,7 +379,7 @@ Output a line, erasing the line first
 
 - ***string*** `$str` - String to output
 - ***null*** | ***int*** `$col` - The column to draw the current line
-- ***boolean*** `$erase` - Clear the line before drawing the passed string
+- ***bool*** `$erase` - Clear the line before drawing the passed string
 
 ## Class: \CLI\StatusGUI
 

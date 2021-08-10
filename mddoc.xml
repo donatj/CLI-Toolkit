@@ -13,7 +13,7 @@
 			<section title="Documentation">
 				<docpage target="DOCS.md" autoloader="psr0" autoloader-root="src">
 					<section title="Documentation">
-						<recursivedirectory name="lib"/>
+						<recursivedirectory name="src"/>
 					</section>
 				</docpage>
 			</section>
