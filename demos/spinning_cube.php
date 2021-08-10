@@ -81,8 +81,13 @@ $faces = array( array( 0, 1, 2, 3 ), array( 1, 5, 6, 2 ), array( 5, 4, 7, 6 ), a
 
 /* Assign random values for the angles that describe the cube orientation. */
 $nnn = 0;
+
+CLI\Cursor::hide();
+CLI\Cursor::rowcol(1,1);
+CLI\Cursor::save();
 while( true ) {
-	CLI\Erase::screen();
+	CLI\Erase::down();
+
 	$angleX = -35 + ($nnn++);
 	$angleZ = 15 + ($nnn++ / 2);
 	$angleY = -30 + +($nnn++ / 3);
@@ -101,7 +106,7 @@ while( true ) {
 	$avgZ = array();
 
 	foreach( $faces as $index => $f ) {
-		$avgZ["$index"] = ($t[$f[0]]->z + $t[$f[1]]->z + $t[$f[2]]->z + $t[$f[3]]->z) / 4.0;
+		$avgZ[(string)$index] = ($t[$f[0]]->z + $t[$f[1]]->z + $t[$f[2]]->z + $t[$f[3]]->z) / 4.0;
 	}
 
 	arsort($avgZ);
@@ -116,10 +121,10 @@ while( true ) {
 			$l[$f[3]]->x, $l[$f[3]]->y
 		);
 
-		CLI\Graphics::line($l[$f[0]]->x, $l[$f[0]]->y, $l[$f[1]]->x, $l[$f[1]]->y, '.');
-		CLI\Graphics::line($l[$f[1]]->x, $l[$f[1]]->y, $l[$f[2]]->x, $l[$f[2]]->y, '.');
-		CLI\Graphics::line($l[$f[2]]->x, $l[$f[2]]->y, $l[$f[3]]->x, $l[$f[3]]->y, '.');
-		CLI\Graphics::line($l[$f[3]]->x, $l[$f[3]]->y, $l[$f[0]]->x, $l[$f[0]]->y, '.');
+		CLI\Graphics::line($l[$f[0]]->x, $l[$f[0]]->y, $l[$f[1]]->x, $l[$f[1]]->y, array('.'));
+		CLI\Graphics::line($l[$f[1]]->x, $l[$f[1]]->y, $l[$f[2]]->x, $l[$f[2]]->y, array('.'));
+		CLI\Graphics::line($l[$f[2]]->x, $l[$f[2]]->y, $l[$f[3]]->x, $l[$f[3]]->y, array('.'));
+		CLI\Graphics::line($l[$f[3]]->x, $l[$f[3]]->y, $l[$f[0]]->x, $l[$f[0]]->y, array('.'));
 
 
 		$points = array(
@@ -138,4 +143,5 @@ while( true ) {
 	}
 
 	usleep(50000);
+	CLI\Cursor::restore();
 }
