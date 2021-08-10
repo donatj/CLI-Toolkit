@@ -9,7 +9,7 @@ class Output {
 	 *
 	 * @var resource
 	 */
-	static $stream = STDOUT;
+	public static $stream = STDOUT;
 
 	/**
 	 * Output a string

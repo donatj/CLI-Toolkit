@@ -9,7 +9,7 @@ class Misc {
 	 *
 	 * @var resource
 	 */
-	static $stream = STDERR;
+	public static $stream = STDERR;
 
 	/**
 	 * The col size of the current terminal as returned by tput

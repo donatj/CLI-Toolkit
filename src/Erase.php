@@ -9,7 +9,7 @@ class Erase {
 	 *
 	 * @var resource
 	 */
-	static $stream = STDERR;
+	public static $stream = STDERR;
 
 	/**
 	 * Erase to the end of line
