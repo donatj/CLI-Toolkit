@@ -1,6 +1,6 @@
 <?php
 
-require('__autoload.php');
+require __DIR__ . '/../vendor/autoload.php';
 
 $func = function ( $i, $gap ) {
 	$j    = $i / 10;

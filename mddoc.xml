@@ -11,9 +11,9 @@
 				<composer-install/>
 			</section>
 			<section title="Documentation">
-				<docpage target="DOCS.md" autoloader="psr0" autoloader-root="src">
+				<docpage target="DOCS.md" autoloader="psr4" autoloader-root="src" autoloader-root-namespace="CLI">
 					<section title="Documentation">
-						<recursivedirectory name="lib"/>
+						<recursivedirectory name="src"/>
 					</section>
 				</docpage>
 			</section>

@@ -1,6 +1,6 @@
 <?php
 
-require('__autoload.php');
+require __DIR__ . '/../vendor/autoload.php';
 
 /* Represents points in 3D space. */
 class Point3D {

@@ -17,8 +17,8 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "CLI": "lib/"
+        "psr-4": {
+            "CLI\\": "src"
         }
     }
 }
