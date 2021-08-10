@@ -21,7 +21,7 @@ class Misc {
 	public static function cols( $cache = true ) {
 		static $cols = false;
 		if( !$cols || !$cache ) {
-			$cols = intval(`tput cols`);
+			$cols = (int)shell_exec("tput cols");
 		}
 
 		return $cols ? : 80;
@@ -37,7 +37,7 @@ class Misc {
 	public static function rows( $cache = true ) {
 		static $rows = false;
 		if( !$rows || !$cache ) {
-			$rows = intval(`tput lines`);
+			$rows = (int)shell_exec("tput lines");
 		}
 
 		return $rows ? : 24;
@@ -56,14 +56,14 @@ class Misc {
 	 * Save the current state of the terminal via tput
 	 */
 	public static function savestate() {
-		fwrite(self::$stream, `tput smcup`);
+		fwrite(self::$stream, shell_exec("tput smcup"));
 	}
 
 	/**
 	 * Restore the current state of the terminal via tput
 	 */
 	public static function restorestate() {
-		fwrite(self::$stream, `tput rmcup`);
+		fwrite(self::$stream, shell_exec("tput rmcup"));
 	}
 
 }
