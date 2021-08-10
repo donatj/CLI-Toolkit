@@ -9,8 +9,8 @@ class StatusGUI {
 	 *
 	 * @var resource
 	 */
-	static $stream = STDERR;
-	static $altstream = STDOUT;
+	public static $stream = STDERR;
+	public static $altstream = STDOUT;
 
 	/**
 	 * Render a statusbar stack
@@ -123,7 +123,7 @@ class StatusGUI {
 		#$lev = round(($numerator / $denominator) * 8);
 
 
-		$lev              = intval(($numerator / $denominator) * 9);
+		$lev              = (int)(($numerator / $denominator) * 9);
 		$lev              = min($lev, 8);
 		$hist[$hist_id][] = $lev == 8 ? Style::$full_color($levels[$lev]) : Style::$color($levels[$lev]);
 		array_shift($hist[$hist_id]);

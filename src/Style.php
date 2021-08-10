@@ -33,7 +33,7 @@ namespace CLI;
  */
 class Style {
 
-	static $foreground_colors = array(
+	public static $foreground_colors = array(
 		'bold'       => '1',    'dim'          => '2',
 		'black'      => '0;30', 'dark_gray'    => '1;30',
 		'blue'       => '0;34', 'light_blue'   => '1;34',
@@ -46,14 +46,14 @@ class Style {
 		'normal'     => '0;39',
 	);
 
-	static $background_colors = array(
+	public static $background_colors = array(
 		'black' => '40', 'red' => '41',
 		'green' => '42', 'yellow' => '43',
 		'blue'  => '44', 'magenta' => '45',
 		'cyan'  => '46', 'light_gray' => '47',
 	);
 
-	static $options = array(
+	public static $options = array(
 		'underline' => '4', 'blink' => '5',
 		'reverse'   => '7', 'hidden' => '8',
 	);
@@ -61,7 +61,7 @@ class Style {
 	public static function __callStatic( $foreground_color, $args ) {
 
 		$string         = $args[0];
-		$colored_string = "";
+		$colored_string = '';
 
 		// Check if given foreground color found
 		if( isset(self::$foreground_colors[$foreground_color]) ) {
