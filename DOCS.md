@@ -490,7 +490,7 @@ Class Style
 ### Magic Method: Style::bold
 
 ```php
-function bold($text, $args) : void
+function bold($text, $args) : string
 ```
 
 ---
@@ -498,7 +498,7 @@ function bold($text, $args) : void
 ### Magic Method: Style::black
 
 ```php
-function black($text, $args) : void
+function black($text, $args) : string
 ```
 
 ---
@@ -506,7 +506,7 @@ function black($text, $args) : void
 ### Magic Method: Style::blue
 
 ```php
-function blue($text, $args) : void
+function blue($text, $args) : string
 ```
 
 ---
@@ -514,7 +514,7 @@ function blue($text, $args) : void
 ### Magic Method: Style::green
 
 ```php
-function green($text, $args) : void
+function green($text, $args) : string
 ```
 
 ---
@@ -522,7 +522,7 @@ function green($text, $args) : void
 ### Magic Method: Style::cyan
 
 ```php
-function cyan($text, $args) : void
+function cyan($text, $args) : string
 ```
 
 ---
@@ -530,7 +530,7 @@ function cyan($text, $args) : void
 ### Magic Method: Style::red
 
 ```php
-function red($text, $args) : void
+function red($text, $args) : string
 ```
 
 ---
@@ -538,7 +538,7 @@ function red($text, $args) : void
 ### Magic Method: Style::purple
 
 ```php
-function purple($text, $args) : void
+function purple($text, $args) : string
 ```
 
 ---
@@ -546,7 +546,7 @@ function purple($text, $args) : void
 ### Magic Method: Style::brown
 
 ```php
-function brown($text, $args) : void
+function brown($text, $args) : string
 ```
 
 ---
@@ -554,7 +554,7 @@ function brown($text, $args) : void
 ### Magic Method: Style::light_gray
 
 ```php
-function light_gray($text, $args) : void
+function light_gray($text, $args) : string
 ```
 
 ---
@@ -562,7 +562,7 @@ function light_gray($text, $args) : void
 ### Magic Method: Style::normal
 
 ```php
-function normal($text, $args) : void
+function normal($text, $args) : string
 ```
 
 ---
@@ -570,7 +570,7 @@ function normal($text, $args) : void
 ### Magic Method: Style::dim
 
 ```php
-function dim($text, $args) : void
+function dim($text, $args) : string
 ```
 
 ---
@@ -578,7 +578,7 @@ function dim($text, $args) : void
 ### Magic Method: Style::dark_gray
 
 ```php
-function dark_gray($text, $args) : void
+function dark_gray($text, $args) : string
 ```
 
 ---
@@ -586,7 +586,7 @@ function dark_gray($text, $args) : void
 ### Magic Method: Style::light_blue
 
 ```php
-function light_blue($text, $args) : void
+function light_blue($text, $args) : string
 ```
 
 ---
@@ -594,7 +594,7 @@ function light_blue($text, $args) : void
 ### Magic Method: Style::light_green
 
 ```php
-function light_green($text, $args) : void
+function light_green($text, $args) : string
 ```
 
 ---
@@ -602,7 +602,7 @@ function light_green($text, $args) : void
 ### Magic Method: Style::light_cyan
 
 ```php
-function light_cyan($text, $args) : void
+function light_cyan($text, $args) : string
 ```
 
 ---
@@ -610,7 +610,7 @@ function light_cyan($text, $args) : void
 ### Magic Method: Style::light_red
 
 ```php
-function light_red($text, $args) : void
+function light_red($text, $args) : string
 ```
 
 ---
@@ -618,7 +618,7 @@ function light_red($text, $args) : void
 ### Magic Method: Style::light_purple
 
 ```php
-function light_purple($text, $args) : void
+function light_purple($text, $args) : string
 ```
 
 ---
@@ -626,7 +626,7 @@ function light_purple($text, $args) : void
 ### Magic Method: Style::yellow
 
 ```php
-function yellow($text, $args) : void
+function yellow($text, $args) : string
 ```
 
 ---
@@ -634,7 +634,7 @@ function yellow($text, $args) : void
 ### Magic Method: Style::white
 
 ```php
-function white($text, $args) : void
+function white($text, $args) : string
 ```
 
 
