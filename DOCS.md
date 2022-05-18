@@ -381,6 +381,39 @@ Output a line, erasing the line first
 - ***null*** | ***int*** `$col` - The column to draw the current line
 - ***bool*** `$erase` - Clear the line before drawing the passed string
 
+## Class: \CLI\Screen
+
+```php
+<?php
+namespace CLI;
+
+class Screen {
+	/**
+	 * Pointer to the stream where the data is sent
+	 * @var resource
+	 */
+	public static $stream = STDERR;
+}
+```
+
+### Method: Screen::alternate
+
+```php
+function alternate([ $erase = true])
+```
+
+Switch to the alternate screen buffer, optionally clearing it
+
+---
+
+### Method: Screen::main
+
+```php
+function main()
+```
+
+Switch to the main screen buffer
+
 ## Class: \CLI\StatusGUI
 
 ```php
