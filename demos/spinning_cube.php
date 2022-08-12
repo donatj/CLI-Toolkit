@@ -72,7 +72,7 @@ $vertices = array(
 	new Point3D(-$hWidth, $hHeight, $hDepth),
 	new Point3D($hWidth, $hHeight, $hDepth),
 	new Point3D($hWidth, -$hHeight, $hDepth),
-	new Point3D(-$hWidth, -$hHeight, $hDepth)
+	new Point3D(-$hWidth, -$hHeight, $hDepth),
 );
 
 /* Define the vertices that compose each of the 6 faces. These numbers are
@@ -103,22 +103,12 @@ while( true ) {
 		$l[]     = $rotated->project($img_width, $img_height, 256, 9);
 	}
 
-	$avgZ = array();
-
 	foreach( $faces as $index => $f ) {
-		$avgZ[(string)$index] = ($t[$f[0]]->z + $t[$f[1]]->z + $t[$f[2]]->z + $t[$f[3]]->z) / 4.0;
-	}
-
-	arsort($avgZ);
-
-	foreach( $avgZ as $index => $z ) {
-		$f = $faces[$index];
-
 		$points = array(
 			$l[$f[0]]->x, $l[$f[0]]->y,
 			$l[$f[1]]->x, $l[$f[1]]->y,
 			$l[$f[2]]->x, $l[$f[2]]->y,
-			$l[$f[3]]->x, $l[$f[3]]->y
+			$l[$f[3]]->x, $l[$f[3]]->y,
 		);
 
 		CLI\Graphics::line($l[$f[0]]->x, $l[$f[0]]->y, $l[$f[1]]->x, $l[$f[1]]->y, array('.'));
@@ -126,20 +116,17 @@ while( true ) {
 		CLI\Graphics::line($l[$f[2]]->x, $l[$f[2]]->y, $l[$f[3]]->x, $l[$f[3]]->y, array('.'));
 		CLI\Graphics::line($l[$f[3]]->x, $l[$f[3]]->y, $l[$f[0]]->x, $l[$f[0]]->y, array('.'));
 
-
 		$points = array(
 			$t[$f[0]]->x, $t[$f[0]]->y,
 			$t[$f[1]]->x, $t[$f[1]]->y,
 			$t[$f[2]]->x, $t[$f[2]]->y,
-			$t[$f[3]]->x, $t[$f[3]]->y
+			$t[$f[3]]->x, $t[$f[3]]->y,
 		);
 
 		CLI\Graphics::line($t[$f[0]]->x, $t[$f[0]]->y, $t[$f[1]]->x, $t[$f[1]]->y);
 		CLI\Graphics::line($t[$f[1]]->x, $t[$f[1]]->y, $t[$f[2]]->x, $t[$f[2]]->y);
 		CLI\Graphics::line($t[$f[2]]->x, $t[$f[2]]->y, $t[$f[3]]->x, $t[$f[3]]->y);
 		CLI\Graphics::line($t[$f[3]]->x, $t[$f[3]]->y, $t[$f[0]]->x, $t[$f[0]]->y);
-
-
 	}
 
 	usleep(50000);
