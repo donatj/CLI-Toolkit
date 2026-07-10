@@ -28,13 +28,13 @@ class AnsiTerminalBuffer {
 		$command = 'python3 ' . escapeshellarg($script) . ' ' . $this->rows . ' ' . $this->cols;
 
 		$descriptors = array(
-			0 => array( 'pipe', 'r' ),
-			1 => array( 'pipe', 'w' ),
-			2 => array( 'pipe', 'w' ),
+			0 => array('pipe', 'r'),
+			1 => array('pipe', 'w'),
+			2 => array('pipe', 'w'),
 		);
 
 		$process = proc_open($command, $descriptors, $pipes);
-		if( !is_resource($process) ) {
+		if (!is_resource($process)) {
 			throw new RuntimeException('Failed to start python3 for terminal rendering');
 		}
 
@@ -47,12 +47,12 @@ class AnsiTerminalBuffer {
 		fclose($pipes[2]);
 
 		$exitCode = proc_close($process);
-		if( $exitCode !== 0 ) {
+		if ($exitCode !== 0) {
 			throw new RuntimeException('pyte renderer failed: ' . trim((string)$stderr));
 		}
 
 		$decoded = json_decode((string)$stdout, true);
-		if( !is_array($decoded) || !isset($decoded['lines'], $decoded['cursor_row'], $decoded['cursor_col']) ) {
+		if (!is_array($decoded) || !isset($decoded['lines'], $decoded['cursor_row'], $decoded['cursor_col'])) {
 			throw new RuntimeException('Invalid pyte renderer output');
 		}
 
@@ -63,7 +63,7 @@ class AnsiTerminalBuffer {
 
 	public function getLine($row): string {
 		$index = (int)$row - 1;
-		if( $index < 0 || !isset($this->lines[$index]) ) {
+		if ($index < 0 || !isset($this->lines[$index])) {
 			return '';
 		}
 
