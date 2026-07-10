@@ -110,8 +110,7 @@ class AnsiTerminalBuffer {
 	}
 
 	private function applyCsi($params, $final): void {
-		$privateMode = isset($params[0]) && $params[0] === '?';
-		if( $privateMode ) {
+		if( isset($params[0]) && $params[0] === '?' ) {
 			return;
 		}
 
