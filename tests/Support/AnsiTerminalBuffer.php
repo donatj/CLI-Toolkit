@@ -25,7 +25,7 @@ class AnsiTerminalBuffer {
 
 	public function apply($output): void {
 		$script = __DIR__ . '/render_terminal.py';
-		$command = 'python3 ' . escapeshellarg($script) . ' ' . $this->rows . ' ' . $this->cols;
+		$command = 'python3 ' . escapeshellarg($script) . ' ' . escapeshellarg((string)$this->rows) . ' ' . escapeshellarg((string)$this->cols);
 
 		$descriptors = array(
 			0 => array('pipe', 'r'),
@@ -48,7 +48,7 @@ class AnsiTerminalBuffer {
 
 		$exitCode = proc_close($process);
 		if ($exitCode !== 0) {
-			throw new RuntimeException('pyte renderer failed: ' . trim((string)$stderr));
+			throw new RuntimeException('pyte renderer failed (exit code ' . $exitCode . '): ' . trim((string)$stderr));
 		}
 
 		$decoded = json_decode((string)$stdout, true);

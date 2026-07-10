@@ -5,8 +5,8 @@ import sys
 
 try:
     import pyte
-except ImportError as exc:
-    print(f"pyte is required: {exc}", file=sys.stderr)
+except ImportError:
+    print("Error: pyte package not found. Install with: pip3 install pyte==0.8.2", file=sys.stderr)
     sys.exit(2)
 
 
