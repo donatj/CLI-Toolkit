@@ -32,5 +32,8 @@ jobs:
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist
 
+      - name: Install terminal parser dependency
+        run: pip3 install -r tests/requirements.txt
+
       - name: Run tests
         run: composer test
