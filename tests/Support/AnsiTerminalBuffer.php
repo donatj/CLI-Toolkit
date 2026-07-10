@@ -22,7 +22,7 @@ class AnsiTerminalBuffer {
 	public function __construct($rows = 10, $cols = 40) {
 		$this->rows = (int)$rows;
 		$this->cols = (int)$cols;
-		for( $row = 1; $row <= $this->rows; $row++ ) {
+		for ($row = 1; $row <= $this->rows; $row++) {
 			$this->lines[$row] = str_repeat(' ', $this->cols);
 		}
 	}
@@ -30,27 +30,27 @@ class AnsiTerminalBuffer {
 	public function apply($output): void {
 		$length = strlen($output);
 		$index = 0;
-		while( $index < $length ) {
+		while ($index < $length) {
 			$char = $output[$index];
-			if( $char !== "\033" ) {
+			if ($char !== "\033") {
 				$this->writeChar($char);
 				$index++;
 				continue;
 			}
 
 			$index++;
-			if( $index >= $length ) {
+			if ($index >= $length) {
 				break;
 			}
 
 			$escapeChar = $output[$index];
-			if( $escapeChar === '[' ) {
+			if ($escapeChar === '[') {
 				$index++;
 				$params = '';
-				while( $index < $length ) {
+				while ($index < $length) {
 					$candidate = $output[$index];
 					$ord = ord($candidate);
-					if( $ord >= 0x40 && $ord <= 0x7E ) {
+					if ($ord >= 0x40 && $ord <= 0x7E) {
 						$this->applyCsi($params, $candidate);
 						$index++;
 						break;
@@ -61,10 +61,10 @@ class AnsiTerminalBuffer {
 				continue;
 			}
 
-			if( $escapeChar === '7' ) {
+			if ($escapeChar === '7') {
 				$this->savedRow = $this->cursorRow;
 				$this->savedCol = $this->cursorCol;
-			} elseif( $escapeChar === '8' ) {
+			} elseif ($escapeChar === '8') {
 				$this->cursorRow = $this->savedRow;
 				$this->cursorCol = $this->savedCol;
 			}
@@ -74,7 +74,7 @@ class AnsiTerminalBuffer {
 	}
 
 	public function getLine($row): string {
-		if( $row < 1 || $row > $this->rows ) {
+		if ($row < 1 || $row > $this->rows) {
 			return str_repeat(' ', $this->cols);
 		}
 
@@ -90,33 +90,33 @@ class AnsiTerminalBuffer {
 	}
 
 	private function writeChar($char): void {
-		if( $char === "\n" ) {
+		if ($char === "\n") {
 			$this->cursorRow = min($this->rows, $this->cursorRow + 1);
 			$this->cursorCol = 1;
 			return;
 		}
 
-		if( $char === "\r" ) {
+		if ($char === "\r") {
 			$this->cursorCol = 1;
 			return;
 		}
 
 		$this->setChar($this->cursorRow, $this->cursorCol, $char);
 		$this->cursorCol++;
-		if( $this->cursorCol > $this->cols ) {
+		if ($this->cursorCol > $this->cols) {
 			$this->cursorCol = 1;
 			$this->cursorRow = min($this->rows, $this->cursorRow + 1);
 		}
 	}
 
 	private function applyCsi($params, $final): void {
-		if( isset($params[0]) && $params[0] === '?' ) {
+		if (isset($params[0]) && $params[0] === '?') {
 			return;
 		}
 
 		$parts = $params === '' ? array() : explode(';', $params);
 
-		switch( $final ) {
+		switch ($final) {
 			case 'f':
 			case 'H':
 				$row = isset($parts[0]) && $parts[0] !== '' ? (int)$parts[0] : 1;
@@ -152,12 +152,12 @@ class AnsiTerminalBuffer {
 	}
 
 	private function eraseLine($mode): void {
-		if( $mode === 1 ) {
+		if ($mode === 1) {
 			$this->clearRange($this->cursorRow, 1, $this->cursorCol);
 			return;
 		}
 
-		if( $mode === 2 ) {
+		if ($mode === 2) {
 			$this->clearRange($this->cursorRow, 1, $this->cols);
 			return;
 		}
@@ -166,22 +166,22 @@ class AnsiTerminalBuffer {
 	}
 
 	private function eraseDisplay($mode): void {
-		if( $mode === 1 ) {
-			for( $row = 1; $row <= $this->cursorRow; $row++ ) {
+		if ($mode === 1) {
+			for ($row = 1; $row <= $this->cursorRow; $row++) {
 				$end = $row === $this->cursorRow ? $this->cursorCol : $this->cols;
 				$this->clearRange($row, 1, $end);
 			}
 			return;
 		}
 
-		if( $mode === 2 ) {
-			for( $row = 1; $row <= $this->rows; $row++ ) {
+		if ($mode === 2) {
+			for ($row = 1; $row <= $this->rows; $row++) {
 				$this->clearRange($row, 1, $this->cols);
 			}
 			return;
 		}
 
-		for( $row = $this->cursorRow; $row <= $this->rows; $row++ ) {
+		for ($row = $this->cursorRow; $row <= $this->rows; $row++) {
 			$start = $row === $this->cursorRow ? $this->cursorCol : 1;
 			$this->clearRange($row, $start, $this->cols);
 		}
@@ -190,7 +190,7 @@ class AnsiTerminalBuffer {
 	private function clearRange($row, $startCol, $endCol): void {
 		$start = $this->clamp((int)$startCol, 1, $this->cols);
 		$end = $this->clamp((int)$endCol, 1, $this->cols);
-		if( $start > $end || !isset($this->lines[$row]) ) {
+		if ($start > $end || !isset($this->lines[$row])) {
 			return;
 		}
 
@@ -200,7 +200,7 @@ class AnsiTerminalBuffer {
 	}
 
 	private function setChar($row, $col, $char): void {
-		if( !isset($this->lines[$row]) || $col < 1 || $col > $this->cols ) {
+		if (!isset($this->lines[$row]) || $col < 1 || $col > $this->cols) {
 			return;
 		}
 
