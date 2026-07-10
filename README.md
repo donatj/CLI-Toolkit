@@ -8,7 +8,7 @@ A Simple PHP CLI Toolkit
 
 ## Requirements
 
-- **php**: >=5.3.0
+- **php**: >=7.4.0
 
 ## Installing
 
